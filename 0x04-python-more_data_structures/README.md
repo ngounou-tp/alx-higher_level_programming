@@ -1,198 +1,117 @@
-# 0x03. Python - Data Structures: Lists, Tuples
+# 0x04. Python - More Data Structures: Set, Dictionary
 ## About
 An introductory project on:
-- Lists, their methods, and how to use them
-- How to use lists as stacks and queues
-- List comprehensions and how to use them
-- Tuples and how to use them
-- Sequences
-- Tuple packing
-- Sequence unpacking
-- The `del` statement and how to use it
+- Sets and how to use them
+- The most common set methods and how to use them
+- How to iterate through a ser
+- When to use sets versus lists versus dictionaries
+- Dictionary and how to use them
+- What is a key in a dictionary
+- How to iterate through a dictionary
+- What is a lambda function
+- What are map and reduce
 ## Requirements
-### Python Scripts
 - Python 3.4
 - pep8 1.7
-### C Files
-- Ubuntu 14.04 LTS
-- gcc 4.8.4 using the flags -Wall -Werror -Wextra and -pedantic
-- [Betty Style](https://github.com/holbertonschool/Betty/wiki)
 ## File Descriptions
 ### Mandatory
-**[0-print_list_integer.py](0-print_list_integer.py)** - Write a function that prints all integers of a list.
-- Prototype: `def print_list_integer(my_list=[]):`
-- Format: one integer per line
+**[0-square_matrix_simple.py](0-square_matrix_simple.py)** - Write a function that computes the square value of all integers of a matrix.
+- Prototype: `def square_matrix_simple(matrix=[]):`
+- `matrix` is a 2 dimensional array
+- Returns a new matrix:
+  - Same size as `matrix`
+  - Each value should be the square of the value of the input
+- Initial matrix should not be modified
 - You are not allowed to import any module
-- You can assume that the list only contains integers
-- You are not allowed to cast integers into strings
-- You have to use `str.format()` to print integers
+- You are allow to use regular loops, `map`, etc.
 
-**[1-element_at.py](1-element_at.py)** - Write a function that retrieves an element from a list like on C.
-- Prototype: `def element_at(my_list, idx):`
-- If `idx` is negative, the function should return `None`
-- If `idx` is out of range (> of number of element in `my_list`), the function should return `None`
-- You are not allowed to import any module
-- You are not allowed to use `try/except`
-
-**[2-replace_in_list.py](2-replace_in_list.py)** - Write a function that replaces an element of a list at a specific position (like in C).
-- Prototype: `def replace_in_list(my_list, idx, element):`
-- If `idx` is negative, the function should not modify anything, and returns the original list
-- If `idx` is out of range (> of number of element in `my_list`), the function should not modify anything, and returns the original list
-- You are not allowed to import any module
-- You are not allowed to use `try/except`
-
-**[3-print_reversed_list_integer.py](3-print_reversed_list_integer.py)** - Write a function that prints all integers of a list, in reverse order.
-- Prototype: `def print_reversed_list_integer(my_list=[]):`
-- Format: one integer per line. See example
-- You are not allowed to import any module
-- You can assume that the list only contains integers
-- You are not allowed to cast integers into strings
-- You have to use `str.format()` to print integers
-
-**[4-new_in_list.py](4-new_in_list.py)** - Write a function that replaces an element in a list at a specific position without modifying the original list (like in C).
-- Prototype: `def new_in_list(my_list, idx, element):`
-- If `idx` is negative, the function should return a copy of the original `list`
-- If `idx` is out of range (> of number of element in `my_list`), the function should return a copy of the original `list`
-- You are not allowed to import any module
-- You are not allowed to use `try/except`
-
-**[5-no_c.py](5-no_c.py)** - Write a function that removes all characters `c` and `C` from a string.
-- Prototype: `def no_c(my_string):`
-- The function shoud return the new string
-- You are not allowed to import any module
-- You are not allowed to use `str.replace()`
-
-**[6-print_matrix_integer.py](6-print_matrix_integer.py)** - Write a function that prints a matrix of integers.
-- Prototype: `def print_matrix_integer(matrix=[[]]):`
-- Format: see example
-- You are not allowed to import any module
-- You can assume that the list only contains integers
-- You are not allowed to cast integers into strings
-- You have to use `str.format()` to print integers
-```
-guillaume@ubuntu:~/0x03$ cat 6-main.py
-#!/usr/bin/python3
-print_matrix_integer = __import__('6-print_matrix_integer').print_matrix_integer
-
-matrix = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]
-
-print_matrix_integer(matrix)
-print("--")
-print_matrix_integer()
-
-guillaume@ubuntu:~/0x03$ ./6-main.py | cat -e
-1 2 3$
-4 5 6$
-7 8 9$
---$
-$
-guillaume@ubuntu:~/0x03$ 
-```
-
-**[7-add_tuple.py](7-add_tuple.py)** - Write a function that adds 2 tuples.
-- Prototype: `def add_tuple(tuple_a=(), tuple_b=()):`
-- Returns a tuple with 2 integers:
-  - The first element should be the addition of the first element of each argument
-  - The second element should be the addition of the second element of each argument
-- You are not allowed to import any module
-- You can assume that the two tuples will only contain integers
-- If a tuple is smaller than 2, use the value 0 for each missing integer
-- If a tuple is bigger than 2, use only the first 2 integers
-
-**[8-multiple_returns.py](8-multiple_returns.py)** - Write a function that returns a tuple with the length of a string and its first character.
-- Prototype: `def multiple_returns(sentence):`
-- If the sentence is empty, the first character should be equal to `None`
+**[1-search_replace.py](1-search_replace.py)** - Write a function that replaces all occurrences of an element by another in a new list.
+- Prototype: `def search_replace(my_list, search, replace):`
+- `my_list` is the initial list
+- `search` is the element to replace in the list
+- `replace` is the new element
 - You are not allowed to import any module
 
-**[9-max_integer.py](9-max_integer.py)** - Write a function that finds the biggest integer of a list.
-- Prototype: `def max_integer(my_list=[]):`
-- If the list is empty, return `None`
-- You can assume that the list only contains integers
-- You are not allowed to import any module
-- You are not allowed to use the builtin `max()`
-
-**[10-divisible_by_2.py](10-divisible_by_2.py)** - Write a function that finds all multiples of 2 in a list.
-- Prototype: `def divisible_by_2(my_list=[]):`
-- Return a new list with `True` or `False`, depending on wether the integer at the same position in the original list is a multiple of 2
-- The new list should have the same size as the original list
+**[2-uniq_add.py](2-uniq_add.py)** - Write a function that makes the addition of all unique integers in a list (only one time each integer).
+- Prototype: `def uniq_add(my_list=[]):`
 - You are not allowed to import any module
 
-**[11-delete_at.py](11-delete_at.py)** - Write a function that deletes the item at a specific position in a list.
-- Prototype: `def delete_at(my_list=[], idx=0):`
-- If `idx` is negative or out of range, nothing change
-- You are not allowed to use `pop()`
+**[3-common_elements.py](3-common_elements.py)** - Write a function that returns a set of common elements in two sets.
+- Prototype: `def common_elements(set_1, set_2):`
 - You are not allowed to import any module
 
-**[12-switch.py](12-switch.py)** - Complete the [source code](https://intranet.hbtn.io/rltoken/RfHRsVZK5IVZ5e4-0WAOJQ in order to switch value of `a` and `b`
-- Your program should be exactly 5 lines long
+**[4-only_diff_elements.py](4-only_diff_elements.py)** - Write a function that returns a set of all elements present in only one set.
+- Prototype: `def only_diff_elements(set_1, set_2):`
+- You are not allowed to import any module
 
+**[5-number_keys.py](5-number_keys.py)** - Write a function that returns the number of keys in a dictionary.
+- `Prototype: def number_keys(a_dictionary):`
+- You are not allowed to import any module
+
+**[6-print_sorted_dictionary.py](6-print_sorted_dictionary.py)** - Write a function that prints a dictionary by ordered keys.
+- Prototype: `def print_sorted_dictionary(a_dictionary):`
+- You can assume that all keys are string
+- Keys should be sorted by alphabetic order
+- Only sort keys of the first level (don’t sort keys of a dictionary inside the main dictionary)
+- Dictionary values can have any type
+- You are not allowed to import any module
+
+**[7-update_dictionary.py](7-update_dictionary.py)** - Write a function that replaces or adds key/value in a dictionary.
+- Prototype: `def update_dictionary(a_dictionary, key, value):`
+- `key` argument will be always a string
+- `value` argument will be any type
+- If a key exists in the dictionary, the value will be replaced
+- If a key doesn’t exist in the dictionary, it will be created
+- You are not allowed to import any module
+
+**[8-simple_delete.py](8-simple_delete.py)** - Write a function that deletes a key in a dictionary.
+- Prototype: `def simple_delete(a_dictionary, key=""):`
+- `key` argument will be always a string
+- If a key doesn’t exist, the dictionary won’t change
+- You are not allowed to import any module
+
+**[9-multiply_by_2.py](9-multiply_by_2.py)** - Write a function that returns a new dictionary with all values multiplied by 2
+- Prototype: `def multiply_by_2(a_dictionary):`
+- You can assume that all values are only integers
+- Returns a new dictionary
+- You are not allowed to import any module
+
+**[10-best_score.py](10-best_score.py)** - Write a function that returns a key with the biggest integer value.
+- Prototype: `def best_score(a_dictionary):`
+- You can assume that all values are only integers
+- If no score found, return `None`
+- You can assume all students have a different score
+- You are not allowed to import any module
+
+**[11-mutiply_list_map.py](11-mutiply_list_map.py)** - Write a function that returns a list with all values multiplied by a number without using any loops.
+- Prototype: `def mutiply_list_map(my_list=[], number=0):`
+- Returns a new list:
+  - Same length as `my_list`
+  - Each value should be multiplied by `number`
+- Initial list should not be modified
+- You are not allowed to import any module
+- You have to use `map`
+- Your file should be max 3 lines
 ### Advanced
-**[100-print_python_list_info.c](100-print_python_list_info.c)** - Create a C function that prints some basic info about Python lists.
-- Prototype: `void print_python_list_info(PyObject *p);`
-- Your shared library will be compiled with this command line: `gcc -Wall -Werror -Wextra -pedantic -std=c99 -shared -Wl,-soname,PyList -o libPyList.so -fPIC -I/usr/include/python3.4 100-print_python_list_info.c`
-- Format: see example
-```
-julien@ubuntu:~/CPython$ gcc -Wall -Werror -Wextra -pedantic -std=c99 -shared -Wl,-soname,PyList -o libPyList.so -fPIC -I/usr/include/python3.4 100-print_python_list_info.c
-julien@ubuntu:~/CPython$ cat 100-test_lists.py 
-import ctypes
+**[100-weight_average.py](100-weight_average.py)** - Write a function that returns the weighted average of all integers tuple `(<score>, <weight>)`
+- Prototype: `def weight_average(my_list=[]):`
+- Returns 0 if the list is empty
+- You are not allowed to import any module
 
-lib = ctypes.CDLL('./libPyList.so')
-lib.print_python_list_info.argtypes = [ctypes.py_object]
-l = ['hello', 'World']
-lib.print_python_list_info(l)
-del l[1]
-lib.print_python_list_info(l)
-l = l + [4, 5, 6.0, (9, 8), [9, 8, 1024], "Holberton"]
-lib.print_python_list_info(l)
-l = []
-lib.print_python_list_info(l)
-l.append(0)
-lib.print_python_list_info(l)
-l.append(1)
-l.append(2)
-l.append(3)
-l.append(4)
-lib.print_python_list_info(l)
-l.pop()
-lib.print_python_list_info(l)
-julien@ubuntu:~/CPython$ python3 100-test_lists.py 
-[*] Size of the Python List = 2
-[*] Allocated = 2
-Element 0: str
-Element 1: str
-[*] Size of the Python List = 1
-[*] Allocated = 2
-Element 0: str
-[*] Size of the Python List = 7
-[*] Allocated = 7
-Element 0: str
-Element 1: int
-Element 2: int
-Element 3: float
-Element 4: tuple
-Element 5: list
-Element 6: str
-[*] Size of the Python List = 0
-[*] Allocated = 0
-[*] Size of the Python List = 1
-[*] Allocated = 4
-Element 0: int
-[*] Size of the Python List = 5
-[*] Allocated = 8
-Element 0: int
-Element 1: int
-Element 2: int
-Element 3: int
-Element 4: int
-[*] Size of the Python List = 4
-[*] Allocated = 8
-Element 0: int
-Element 1: int
-Element 2: int
-Element 3: int
-julien@CPython:~/CPython$ 
-```
+**[101-square_matrix_map.py](101-square_matrix_map.py)** - Write a function that computes the square value of all integers of a matrix using `map`
+- Prototype: `def square_matrix_map(matrix=[]):`
+- `matrix` is a 2 dimensional array
+- Returns a new matrix:
+  - Same size as `matrix`
+  - Each value should be the square of the value of the input
+- Initial matrix should not be modified
+- You are not allowed to import any module
+- You have to use `map`
+- You are not allowed to use `for` or `while`
+- Your file should be max 3 lines
+
+**[102-complex_delete.py](102-complex_delete.py)** - Write a function that deletes keys with a specific value in a dictionary.
+- Prototype: `def complex_delete(a_dictionary, value):`
+- If the value doesn’t exist, the dictionary won’t change
+- All keys having the searched value have to be deleted
+- You are not allowed to import any module
